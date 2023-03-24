@@ -39,6 +39,7 @@
             .then(async response => {
                 var agentsJson = JSON.parse(await response.text()).data;
                 agentsJson.forEach((i) => agentsByName.value.set(i.displayName, i.uuid));
+                agentsByName.value = new Map([...agentsByName.value.entries()].sort());
             });
     }
 
