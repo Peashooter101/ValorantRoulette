@@ -38,17 +38,12 @@
         fetch(agentsEndpoint + "?isPlayableCharacter=true")
             .then(async response => {
                 var agentsJson = JSON.parse(await response.text()).data;
-                agentsJson.forEach((i) => agentsByName.value.set(i.displayName, i.uuid));
+                agentsJson.forEach((i) => agentsByName.value.set(i.displayName, i));
                 agentsByName.value = new Map([...agentsByName.value.entries()].sort());
             });
     }
 
-    watch(selectedAgent, (newValue) => {
-        fetch(agentsEndpoint + "/" + agentsByName.value.get(newValue)).then(
-            async response => {
-                selectedAgentJson.value = JSON.parse(await response.text()).data;
-            })
-    })
+    watch(selectedAgent, (i) => selectedAgentJson.value = agentsByName.value.get(i) )
 </script>
 
 <style scoped>
