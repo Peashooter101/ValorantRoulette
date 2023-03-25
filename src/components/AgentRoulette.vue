@@ -2,14 +2,14 @@
     <div v-if="agentsByName.size != 0">
         <select v-model="selectedAgent">
             <option value="" selected disabled>Choose Agent</option>
-            <option v-for="agent in agentsByName.keys()" :key="agent">{{ agent }}</option>
+            <option v-for="agent in (agentsByName.keys() || [])" :key="agent">{{ agent }}</option>
         </select>
         <div v-if="selectedAgent">
-            <h1>{{ selectedAgent }}</h1>
+            <h1>{{ selectedAgent || "No Agent Selected" }}</h1>
             <div class="agent-info">
-                <img class="agent-icon" :src="selectedAgentJson.displayIcon"/>
+                <img v-if="selectedAgentJson.displayIcon" class="agent-icon" :src="selectedAgentJson.displayIcon"/>
                 <div class="agent-details">
-                    <p>{{ selectedAgentJson.description }}</p><br/>
+                    <p>{{ selectedAgentJson.description || "No Agent Description Present" }}</p><br/>
                     <div class="ability-list">
                         <img v-for="ability in selectedAgentJson.abilities" :key="ability" class="ability-icon" :src="ability.displayIcon || 'https://static.wikia.nocookie.net/overwatch_gamepedia/images/5/53/Ability-genji5.png'"/>
                     </div>
@@ -17,9 +17,9 @@
             </div>
             <div>
                 <h1>Debug Information</h1>
-                <p>Selected Agent: {{ selectedAgent }}</p>
-                <p>Agent displayIcon: {{ selectedAgentJson.displayIcon }}</p>
-                <p>Agent JSON: {{ selectedAgentJson }}</p>
+                <p>Selected Agent: {{ selectedAgent || "No Agent Selected" }}</p>
+                <p>Agent displayIcon: {{ selectedAgentJson.displayIcon || "No Agent Display Icon Present" }}</p>
+                <p>Agent JSON: {{ selectedAgentJson || "No Agent JSON Present" }}</p>
             </div>
         </div>
     </div>
