@@ -1,5 +1,15 @@
 <template>
-  <AgentRoulette/>
+  <div class="main">
+    <div class="column">
+      <AgentRoulette/>
+    </div>
+    <div class="column">
+      <AgentRoulette/>
+    </div>
+    <div class="column">
+      <AgentRoulette/>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -21,5 +31,15 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.main {
+  display: flex;
+  justify-content: space-around;
+}
+
+.column {
+  min-width: 30vw;
+  max-width: 30vw;
 }
 </style>

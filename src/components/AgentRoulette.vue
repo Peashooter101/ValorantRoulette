@@ -5,7 +5,7 @@
             <option v-for="agent in (agentsByName.keys() || [])" :key="agent">{{ agent }}</option>
         </select>
         <div v-if="selectedAgent">
-            <h1>{{ selectedAgent || "No Agent Selected" }}</h1>
+            <h1 class="agent-title">{{ selectedAgent.toUpperCase() || "No Agent Selected" }}</h1>
             <div class="agent-info">
                 <img v-if="selectedAgentJson.displayIcon" class="agent-icon" :src="selectedAgentJson.displayIcon"/>
                 <div class="agent-details">
@@ -57,6 +57,13 @@
         margin: 10px;
     }
 
+    .agent-title {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 5em;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
     .agent-info {
         display: flex;
         flex-direction: row;
@@ -82,5 +89,10 @@
         justify-content: space-around;
         background-color: black;
         padding:10px;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        overflow: hidden;
     }
 </style>
