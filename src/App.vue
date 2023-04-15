@@ -4,7 +4,7 @@
       <AgentInfo/>
     </div>
     <div class="column">
-      <AgentInfo/>
+      <GunUwW/>
     </div>
     <div class="column">
       <StrategyRoulette/>
@@ -15,12 +15,14 @@
 <script>
 import AgentInfo from './components/AgentInfo.vue'
 import StrategyRoulette from './components/StrategyRoulette.vue';
+import GunUwW from './components/GunUwW.vue';
 
 export default {
   name: 'App',
   components: {
     AgentInfo,
-    StrategyRoulette
+    StrategyRoulette,
+    GunUwW
   }
 }
 </script>
