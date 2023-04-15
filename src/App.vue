@@ -1,5 +1,6 @@
 <template>
   <div class="main">
+    <BackgroundVideo/>
     <div class="column">
       <AgentInfo/>
     </div>
@@ -13,13 +14,15 @@
 </template>
 
 <script>
-import AgentInfo from './components/AgentInfo.vue'
+import AgentInfo from './components/AgentInfo.vue';
+import BackgroundVideo from './components/BackgroundVideo.vue';
 import StrategyRoulette from './components/StrategyRoulette.vue';
 import GunUwW from './components/GunUwW.vue';
 
 export default {
   name: 'App',
   components: {
+    BackgroundVideo,
     AgentInfo,
     StrategyRoulette,
     GunUwW

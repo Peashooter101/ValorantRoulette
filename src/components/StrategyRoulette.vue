@@ -1,8 +1,4 @@
 <template>
-    <!-- Borrowing BG Video from https://schoch.co.nz/valorant (TODO: Change)-->
-    <video id="background-video" playsinline autoplay muted loop>
-        <source src="https://schoch.co.nz/img/vid.webm" type="video/webm">
-    </video>
     <div>
         <h1>{{ strategy.name }}</h1>
         <p>{{ parseDescription(strategy.description) }}</p>
@@ -17,18 +13,21 @@
     const strategy = ref(strats[Math.floor(Math.random() * strats.length)]);
 
     function parseDescription(desc) {
-        desc
+        desc = replaceEcoRanges(desc);
+        return desc;
+    }
+    function replaceEcoRanges(str) {
+        const rangeReplace = str.match(/\{ecoRange-\d+-\d+\}/) || [];
+        rangeReplace.forEach(range => {
+            const rangeInfo = range.split('-');
+            const rangeMax = rangeInfo[2].substring(0,rangeInfo[2].length-1) / 50;
+            const rangeMin = rangeInfo[1] / 50;
+            const result = Math.round(Math.random() * (rangeMax - rangeMin) + rangeMin);
+            str = str.replace(range, result * 50);
+        })
+        return str;
     }
 </script>
 
-<style>
-    #background-video {
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: -99;
-    }
+<style scoped>
 </style>

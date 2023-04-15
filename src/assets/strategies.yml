@@ -1,6 +1,6 @@
 strategies:
   - name: Credit Limit
-    description: You are limited to spending {range-2000-3000-tens} credits.
+    description: You are limited to spending {ecoRange-2000-3000} credits.
     flags: [eco]
     sides: [defender, attacker]
   - name: My Little Buddy
