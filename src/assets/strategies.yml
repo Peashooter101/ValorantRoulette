@@ -1,0 +1,24 @@
+strategies:
+  - name: Credit Limit
+    description: You are limited to spending {range-2000-3000-tens} credits.
+    flags: [eco]
+    sides: [defender, attacker]
+  - name: My Little Buddy
+    description: Only guns with buddies.
+    flags: [silly]
+    sides: [defender, attacker]
+  - name: Jumpy
+    description: Drop your weapon after seeing someone.
+    flags: [silly, gun-drop]
+    sides: [defender, attacker]
+flags:
+  eco:
+    name: Economy Based
+    description: Relies on economy, either limiting or maximizing eco use.
+  gun-drop:
+    name: Dropping Weapons
+    description: You will drop your weapon and you will hate it.
+  silly:
+    name: Silly
+    description: Funny, not really a challenge oriented strategy.
+  

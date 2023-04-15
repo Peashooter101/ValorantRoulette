@@ -60,8 +60,8 @@
     .agent-title {
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         font-size: 5em;
-        margin-top: 1em;
-        margin-bottom: 1em;
+        margin-top: 0.2em;
+        margin-bottom: 0.2em;
     }
 
     .agent-info {

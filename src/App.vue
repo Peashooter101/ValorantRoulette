@@ -1,24 +1,26 @@
 <template>
   <div class="main">
     <div class="column">
-      <AgentRoulette/>
+      <AgentInfo/>
     </div>
     <div class="column">
-      <AgentRoulette/>
+      <AgentInfo/>
     </div>
     <div class="column">
-      <AgentRoulette/>
+      <StrategyRoulette/>
     </div>
   </div>
 </template>
 
 <script>
-import AgentRoulette from './components/AgentRoulette.vue'
+import AgentInfo from './components/AgentInfo.vue'
+import StrategyRoulette from './components/StrategyRoulette.vue';
 
 export default {
   name: 'App',
   components: {
-    AgentRoulette
+    AgentInfo,
+    StrategyRoulette
   }
 }
 </script>
