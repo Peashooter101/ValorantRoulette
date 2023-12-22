@@ -1,33 +1,26 @@
 <template>
-    <div class="main">
-      <div class="column">
-        <select v-model="selectedGun">
-          <option value="" selected disabled>Choose Pistol</option>
-          <option v-for="gun in (gunsByName.keys() || [])" :key="gun">{{ gun }}</option>
-        </select>
-        <div v-if="selectedGun">
-          <h1 class="gun-title">{{ selectedGun.toUpperCase() || "No Pistol Selected" }}</h1>
-          <div class="gun-info">
-            <img v-if="selectedGunJson.displayIcon" class="gun-icon" :src="selectedGunJson.displayIcon"/>
-            <div class="gun-details">
-              <p>{{ selectedGunJson.displayName || "No Pistol Display Name Present" }}</p><br/>
-              <div class="attachment-list">
-                <img v-for="attachment in selectedGunJson.attachments" :key="attachment.uuid" class="attachment-icon" :src="attachment.displayIcon || 'https://via.placeholder.com/100'"/>
-              </div>
-            </div>
-          </div>
-          <div>
-            <h1>Debug Information</h1>
-            <p>Selected Pistol: {{ selectedGun || "No Pistol Selected" }}</p>
-            <p>Pistol displayIcon: {{ selectedGunJson.displayIcon || "No Pistol Display Icon Present" }}</p>
-            <p>Pistol JSON: {{ selectedGunJson || "No Pistol JSON Present" }}</p>
-          </div>
+  <select v-model="selectedGun">
+    <option value="" selected disabled>Choose Pistol</option>
+    <option v-for="gun in (gunsByName.keys() || [])" :key="gun">{{ gun }}</option>
+  </select>
+    <div v-if="selectedGun">
+    <h1 class="gun-title">{{ selectedGun.toUpperCase() || "No Pistol Selected" }}</h1>
+    <div class="gun-info">
+      <img v-if="selectedGunJson.displayIcon" class="gun-icon" :src="selectedGunJson.displayIcon"/>
+      <div class="gun-details">
+        <p>{{ selectedGunJson.displayName || "No Pistol Display Name Present" }}</p><br/>
+        <div class="attachment-list">
+          <img v-for="attachment in selectedGunJson.attachments" :key="attachment.uuid" class="attachment-icon" :src="attachment.displayIcon || 'https://via.placeholder.com/100'"/>
         </div>
       </div>
-      <div class="column">
-        <StrategyRoulette/>
-      </div>
     </div>
+    <div>
+      <h1>Debug Information</h1>
+      <p>Selected Pistol: {{ selectedGun || "No Pistol Selected" }}</p>
+      <p>Pistol displayIcon: {{ selectedGunJson.displayIcon || "No Pistol Display Icon Present" }}</p>
+      <p>Pistol JSON: {{ selectedGunJson || "No Pistol JSON Present" }}</p>
+    </div>
+  </div>
   </template>
   
   <script setup>
@@ -41,7 +34,6 @@
     async function parseGuns() {
       fetch(gunsEndpoint)
         .then(async (response) => {
-          // console.log(await response.text())
           var gunsJson = JSON.parse(await response.text()).data;
 
           gunsJson.forEach((i) => {
@@ -56,18 +48,9 @@
   </script>
   
   <style scoped>
-  .main {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 60px;
-  }
-  
-  .column {
-    min-width: 30vw;
-    max-width: 30vw;
-  }
   
   .gun-info {
+    justify-content: space-around;
     margin: 20px;
     padding: 20px;
     border: 1px solid #ccc;

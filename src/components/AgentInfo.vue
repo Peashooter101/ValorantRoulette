@@ -1,29 +1,26 @@
 <template>
-    <div v-if="agentsByName.size != 0">
-        <select v-model="selectedAgent">
-            <option value="" selected disabled>Choose Agent</option>
-            <option v-for="agent in (agentsByName.keys() || [])" :key="agent">{{ agent }}</option>
-        </select>
-        <div v-if="selectedAgent">
-            <h1 class="agent-title">{{ selectedAgent.toUpperCase() || "No Agent Selected" }}</h1>
-            <div class="agent-info">
-                <img v-if="selectedAgentJson.displayIcon" class="agent-icon" :src="selectedAgentJson.displayIcon"/>
-                <div class="agent-details">
-                    <p>{{ selectedAgentJson.description || "No Agent Description Present" }}</p><br/>
-                    <div class="ability-list">
-                        <img v-for="ability in selectedAgentJson.abilities" :key="ability" class="ability-icon" :src="ability.displayIcon || 'https://static.wikia.nocookie.net/overwatch_gamepedia/images/5/53/Ability-genji5.png'"/>
-                    </div>
+    <select v-model="selectedAgent">
+        <option value="" selected disabled>Choose Agent</option>
+        <option v-for="agent in (agentsByName.keys() || [])" :key="agent">{{ agent }}</option>
+    </select>
+    <div v-if="selectedAgent">
+        <h1 class="agent-title">{{ selectedAgent.toUpperCase() || "No Agent Selected" }}</h1>
+        <div class="agent-info">
+            <img v-if="selectedAgentJson.displayIcon" class="agent-icon" :src="selectedAgentJson.displayIcon"/>
+            <div class="agent-details">
+                <p>{{ selectedAgentJson.description || "No Agent Description Present" }}</p><br/>
+                <div class="ability-list">
+                    <img v-for="ability in selectedAgentJson.abilities" :key="ability" class="ability-icon" :src="ability.displayIcon || 'https://static.wikia.nocookie.net/overwatch_gamepedia/images/5/53/Ability-genji5.png'"/>
                 </div>
             </div>
-            <div>
-                <h1>Debug Information</h1>
-                <p>Selected Agent: {{ selectedAgent || "No Agent Selected" }}</p>
-                <p>Agent displayIcon: {{ selectedAgentJson.displayIcon || "No Agent Display Icon Present" }}</p>
-                <p>Agent JSON: {{ selectedAgentJson || "No Agent JSON Present" }}</p>
-            </div>
+        </div>
+        <div>
+            <h1>Debug Information</h1>
+            <p>Selected Agent: {{ selectedAgent || "No Agent Selected" }}</p>
+            <p>Agent displayIcon: {{ selectedAgentJson.displayIcon || "No Agent Display Icon Present" }}</p>
+            <p>Agent JSON: {{ selectedAgentJson || "No Agent JSON Present" }}</p>
         </div>
     </div>
-    <p v-else>Agents are not yet loaded.</p>
 </template>
 
 <script setup>
