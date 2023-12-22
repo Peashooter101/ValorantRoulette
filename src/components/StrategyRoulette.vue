@@ -1,4 +1,5 @@
 <template>
+    <button @click="randomize">Randomize Strategy</button>
     <div>
         <h1>{{ strategy.name }}</h1>
         <p>{{ parseDescription(strategy.description) }}</p>
@@ -12,10 +13,15 @@
     const strats = strategiesYml.strategies;
     const strategy = ref(strats[Math.floor(Math.random() * strats.length)]);
 
+    function randomize() {
+        strategy.value = strats[Math.floor(Math.random() * strats.length)];
+    }
+
     function parseDescription(desc) {
         desc = replaceEcoRanges(desc);
         return desc;
     }
+
     function replaceEcoRanges(str) {
         const rangeReplace = str.match(/\{ecoRange-\d+-\d+\}/) || [];
         rangeReplace.forEach(range => {
